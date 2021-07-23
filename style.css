@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: rgb(254,65,3);
+    background: linear-gradient(180deg, rgba(254,65,3,1) 0%, rgba(245,215,16,1) 70%, rgba(255,243,0,1) 100%);
+}
+
+main{
+    width: 20%;
+    margin: 2% auto;
+    padding: 10% 1% 1%;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+}
+
+.result{
+    width: 18%;
+    height: 30px;
+}
+
+.div1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.div2{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.div3{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.div4{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.div5{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button{
+    width: 60px;
+    height: 60px;
+    margin: 1%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+.ac, .posneg, .mod {
+    background-color: #a5a5a5;
+    color: black;
+}
+
+.division, .multiply, .minus, .plus, .equal {
+    background-color: #fe9505;
+}
+
+.num7, .num8, .num9, .num4, .num5, .num6, .num1, .num2, .num3, .num0, .comma{
+    background-color: #333;
+}
+
+.num0{
+    width: 130px;
+    height: 60px;
+    margin: 1%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    text-align: left;
+    padding: 0 22px;
+}
+
+
