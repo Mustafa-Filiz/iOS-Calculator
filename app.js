@@ -42,6 +42,7 @@ const numbersArray = [
 let previousOperand = "";
 let currentOperand = "";
 let operation;
+let temporaryOperand = "";
 
 //Functions
 
@@ -64,6 +65,15 @@ function appendNumber(number) {
 }
 
 function chooseOperation(selectedOperation) {
+    if (previousOperand) {
+        previousOperand = temporaryOperand.toString();
+        currentOperand = "";
+        temporaryOperand = "";
+        operation = selectedOperation;
+
+        displayNumbers();
+        return;
+    }
     operation = selectedOperation;
     previousOperand = currentOperand;
     currentOperand = "";
@@ -75,6 +85,9 @@ function Compute() {
     let computation;
     const previous = parseFloat(previousOperand);
     const current = parseFloat(currentOperand);
+
+    if (!operation) return;
+    if (isNaN(previous) || isNaN(current)) return;
 
     switch (operation) {
         case "+":
@@ -94,18 +107,21 @@ function Compute() {
             break;
     }
 
+    if (isNaN(computation)) return;
+
     currentOperand = computation;
     previousOperand = "";
     operation = undefined;
     displayNumbers();
-
+    temporaryOperand = currentOperand;
     currentOperand = "";
+
 }
 
 function AllClear() {
     previousOperand = "";
     currentOperand = "";
-    operation;
+    operation = undefined;
 
     displayNumbers();
 }
@@ -165,6 +181,7 @@ for (let i = 0; i < numbersArray.length; i++) {
     const number = numbersArray[i];
     number.addEventListener("click", () => {
         appendNumber(i);
+        temporaryOperand = "";
     })
 }
 
