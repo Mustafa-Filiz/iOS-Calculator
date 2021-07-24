@@ -65,7 +65,7 @@ function appendNumber(number) {
 }
 
 function chooseOperation(selectedOperation) {
-    if (previousOperand) {
+    if (temporaryOperand) {
         previousOperand = temporaryOperand.toString();
         currentOperand = "";
         temporaryOperand = "";
