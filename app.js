@@ -41,33 +41,133 @@ const numbersArray = [
 
 let previousOperand = "";
 let currentOperand = "";
+let operation;
 
 //Functions
 
 function displayNumbers() {
-    previousElement.innerHTML = previousOperand;
+    if (operation) {
+        previousElement.innerHTML = previousOperand + " " + operation;
+    } else {
+        previousElement.innerHTML = previousOperand;
+    }
     currentElement.innerHTML = currentOperand;
 }
 
 function appendNumber(number) {
-    previousOperand.
+    if (number === "." && currentOperand.includes(".")) return;
+    if (number === 0 && currentOperand === "0") return;
+
+    currentOperand = currentOperand.toString() + number.toString();
+
+    displayNumbers();
+}
+
+function chooseOperation(selectedOperation) {
+    operation = selectedOperation;
+    previousOperand = currentOperand;
+    currentOperand = "";
+
+    displayNumbers();
+}
+
+function Compute() {
+    let computation;
+    const previous = parseFloat(previousOperand);
+    const current = parseFloat(currentOperand);
+
+    switch (operation) {
+        case "+":
+            computation = previous + current;
+            break;
+        case "-":
+            computation = previous - current;
+            break;
+        case "*":
+            computation = previous * current;
+            break;
+        case "÷":
+            computation = previous / current;
+            break;
+    
+        default:
+            break;
+    }
+
+    currentOperand = computation;
+    previousOperand = "";
+    operation = undefined;
+    displayNumbers();
+
+    currentOperand = "";
+}
+
+function AllClear() {
+    previousOperand = "";
+    currentOperand = "";
+    operation;
+
+    displayNumbers();
+}
+
+function PosNeg() {
+    currentOperand = currentOperand * -1;
+
+    displayNumbers();
+}
+
+function Modulus() {
+    currentOperand = currentOperand / 100;
+
+    displayNumbers();
 }
 
 //Add event listener to operator buttons
 
+additionButton.addEventListener("click", () => {
+    chooseOperation("+");
+})
+
+subtractionButton.addEventListener("click", () => {
+    chooseOperation("-");
+})
+
+divisionButton.addEventListener("click", () => {
+    chooseOperation("÷");
+})
+
+multiplicationButton.addEventListener("click", () => {
+    chooseOperation("*");
+})
+
+equalButton.addEventListener("click", () => {
+    Compute();
+})
 
 // Add event listener to top buttons
+
+acButton.addEventListener("click", () =>{
+    AllClear();
+})
+
+posnegButton.addEventListener("click", () =>{
+    PosNeg();
+})
+
+modButton.addEventListener("click", () =>{
+    Modulus();
+})
 
 
 // Add event listener to number buttons
 
 for (let i = 0; i < numbersArray.length; i++) {
     const number = numbersArray[i];
-
     number.addEventListener("click", () => {
-        console.log("NUMBER:", i);
         appendNumber(i);
-
     })
-    
 }
+
+commaButton.addEventListener("click", () => {
+    appendNumber(".");
+})

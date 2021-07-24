@@ -34,8 +34,6 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
-    border: 1px solid red;
 }
 
 .previous-result{
